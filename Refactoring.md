@@ -9,3 +9,5 @@ You've been asked to refactor the function `deterministicPartitionKey` in [`dpk.
 You will be graded on the exhaustiveness and quality of your unit tests, the depth of your refactor, and the level of insight into your thought process provided by the written explanation.
 
 ## Your Explanation Here
+
+My understanding of determinsticPartitionKey is that it tries to extract a partitionKey from the input so that it is passed either (what it assumes to be) a valid partitionKey, or it will use the input itself to generate a new partitionKey. With that in mind, I refactored the function so that it was not using two separate sets of conditions, since they are actually the same set of results and do not need to be handled sequentially. This preserves the same behavior for cases like the empty input as well as the real inputs, including stringifying inputs and hashing inputs that are too long, confirmed by my unit tests working before and after the change.
